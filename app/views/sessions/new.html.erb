@@ -1,0 +1,42 @@
+<% provide(:title, "Sign in") %>
+<div align="center">
+  <div id="login-box">
+    <div id="title">Login to HRMApp</div>
+      <div align="left">
+        <table id="ctlLogin" cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
+          <tr>
+            <td>
+                <div class="login-box-field input-group input-group-lg ">
+                    <%= form_for(:session, url: sessions_path) do |f| %>
+                      <%= f.text_field :name, class: "form-control form-login ", placeholder: 'Username', autofocus: true%>
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-info-sign my-icon"></span>
+                    </span>
+                  </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <div class="login-box-field input-group input-group-lg ">
+                  <%= f.password_field :password, class: "form-control form-login",placeholder: 'Password'%>
+                  <span class="input-group-addon">
+
+                      <span class="glyphicon glyphicon-lock my-icon"></span>
+                  </span>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit "Sign in", class: "btn btn-large btn-primary btn-cust" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>  
+      </div>
+  </div>
+</div>
+  <div class="copyright" align="center">
+    Copyright &copy; 2014 &nbsp;
+    <a href="http://palmate.in"><span id="dots">Palmate Technologies</span></a>
+  </div>

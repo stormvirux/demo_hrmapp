@@ -1,0 +1,47 @@
+<%- model_class = Contract -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>S#</th>
+      <th><%= model_class.human_attribute_name(:empno) %></th>
+      <th><%= model_class.human_attribute_name(:htype) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:cstart) %></th>
+      <th><%= model_class.human_attribute_name(:cend) %></th>
+      <th><%= model_class.human_attribute_name(:pstart) %></th>
+      <th><%= model_class.human_attribute_name(:pend) %></th>
+      <th><%= model_class.human_attribute_name(:nameiqama) %></th>
+      <th><%= model_class.human_attribute_name(:proiqama) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contracts.each_with_index do |contract,i| %>
+      <tr>
+        <td><%= link_to (i+1), contract_path(contract),{class: "link"} %></td>
+        <td><%= link_to contract.empno,contract_path(contract) %></td>
+        <td><%= contract.htype %></td>
+        <td><%= contract.status %></td>
+        <td><%= contract.cstart %></td>
+        <td><%= contract.cend %></td>
+        <td><%= contract.pstart %></td>
+        <td><%= contract.pend %></td>
+        <td><%= contract.nameiqama %></td>
+        <td><%= contract.proiqama %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_contract_path(contract), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-actions">
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_contract_path,
+            :class => 'btn btn-primary' %>
+<%= link_to "To Excel",contracts_path(format: "xls"),:class => 'btn btn-mini' %>
+</div>

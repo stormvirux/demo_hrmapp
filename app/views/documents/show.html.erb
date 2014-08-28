@@ -1,0 +1,42 @@
+<%- model_class = Document -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<br/>
+<br/>
+  <h5>Document Details</h5>
+  <br/>
+<table class="table table-striped">
+  <tr>
+    <td><%= model_class.human_attribute_name(:empno) %></td>
+    <td><%= @document.empno %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:sig) %></td>
+    <td><% unless @document.sig_url.nil? %><%= image_tag @document.sig_url(:display) %><% end %> </td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:passport) %></td>
+    <td><% unless @document.passport_url.nil? %><%= image_tag @document.passport_url(:display) %><% end %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:iqama) %></td>
+    <td><% unless @document.iqama_url.nil? %><%= image_tag @document.iqama_url(:display) %><% end %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:visa) %></td>
+    <td><% unless @document.visa_url.nil? %><%= image_tag @document.visa_url(:display) %><% end %></td>
+  </tr>
+</table>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              documents_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_document_path(@document), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              document_path(@document),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

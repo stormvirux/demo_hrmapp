@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", :media => :all %>
+  <%= stylesheet_link_tag "print", :media => :print %>
+  <link href='http://fonts.googleapis.com/css?family=Telex' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">-->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <%= render 'layouts/shim' %>
+  <script type="text/javascript">
+$(function () {
+       $(".tip").tooltip();
+});
+</script>
+</head>
+<body>
+  <div id="wrap">
+    <div id="main" class="container clear-top">
+      <%= render 'layouts/header' %>
+      <div class="lol">
+        <% if signed_in? %>
+          <%= link_to_function(raw("<span class='glyphicon glyphicon-print'></span>Print This page &nbsp"),"javascript:print()",:class => 'btn btn-primary btn-print') %>
+        <% end %>
+    </div>
+        <div class="container-fluid">
+          <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <% end %>
+          <%= yield %>
+        </div>
+    </div>
+  </div>
+   <div class="container">      
+    <%= render 'layouts/footer' %>
+   </div>
+
+
+</body>
+</html>

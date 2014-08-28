@@ -1,0 +1,46 @@
+<%= simple_form_for @employee, :html => {:multipart => true ,:class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.input :empno%>
+    <%= f.input :first_name%>
+    <%= f.input :middle_name%>
+    <%= f.input :last_name%>
+    <%= f.input :gender,collection:[[t("helpers.label.employee.male").html_safe,"male"],[t("helpers.label.employee.female").html_safe,"female"]], as: :radio, :class=> 'checkbox inline'%>
+    <%= f.input :dob,end_year: Date.today.year,start_year:1900 %>
+  </div>
+  <div class="control-group">
+    <%= f.input :passportno%>
+    <%= f.input :pidate,end_year: Date.today.year,start_year:1960%>
+    <%= f.input :pedate,end_year: Date.today.year+40,start_year:Date.today.year%>
+    <%= f.input :iqamano%>
+    <%= f.input :iqidate,end_year: Date.today.year,start_year:1960%>
+    <%= f.input :iqedate,end_year: Date.today.year+5,start_year:Date.today.year%>
+    <%= f.input :insuranceno%>
+    <%= f.input :iidate,end_year: Date.today.year,start_year:1960 %>
+    <%= f.input :iedate,end_year: Date.today.year+40,start_year:Date.today.year %>
+    <%= f.input :visano%>
+    <%= f.input :vidate,end_year: Date.today.year,start_year:1960 %>
+    <%= f.input :vedate,end_year: Date.today.year+10,start_year:Date.today.year %>
+  </div>
+  <div class="control-group">
+    <%= f.input :Marstatus, collection:[[t("helpers.label.employee.single").html_safe ,"single"],[t("helpers.label.employee.married").html_safe ,"married"]],as: :radio_buttons %>
+    <%= f.input :religion,collection:[[t("helpers.label.employee.mus").html_safe ,"muslim"],[t("helpers.label.employee.nmus").html_safe ,"nonmuslim"]],include_blank: false %>
+    <%= f.input :nationality, as: :country,include_blank: false %>
+    <%= f.input :civstatus%>
+    <%= f.input :designation%>
+    <%= f.input :department%>
+    <%= f.input :speciali%>
+    <%= f.input :exp%>
+    <%= f.input :email,placeholder:'user@domain.com'%>
+  </div>
+  <div class="control-group">
+
+    <div class="attach-set">
+      <%= f.label t("helpers.label.employee.image").html_safe %> &nbsp
+      <%= f.file_field :image, label: "Select image" %>
+    </div>
+  </div>  
+  <div class="form-actions">
+    <%= f.button :submit ,:class => 'btn btn-primary'%>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),employees_path, :class => 'btn' %>
+  </div>
+<% end %>

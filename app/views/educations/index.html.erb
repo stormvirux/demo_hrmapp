@@ -1,0 +1,43 @@
+<%- model_class = Education -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>S#</th>
+      <th><%= model_class.human_attribute_name(:empno)%></th>
+      <th><%= model_class.human_attribute_name(:edtype)%></th>
+      <th><%= model_class.human_attribute_name(:degyear)%></th>
+      <th><%= model_class.human_attribute_name(:deg)%></th>
+      <th><%= model_class.human_attribute_name(:special)%></th>
+      <th><%= model_class.human_attribute_name(:verified)%></th>
+      <th><%= model_class.human_attribute_name(:verby)%></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @educations.each_with_index do |education,i| %>
+      <tr>
+        <td><%= link_to (i+1), education_path(education) %></td>
+        <td><%= link_to education.empno,education_path(education) %></td>
+        <td><%= education.edtype %></td>
+        <td><%= education.degyear %></td>
+        <td><%= education.deg %></td>
+        <td><%= education.special %></td>
+        <td><%= education.verified %></td>
+        <td><%= education.verby %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_education_path(education), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-actions">
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_education_path,
+            :class => 'btn btn-primary' %>
+<%= link_to "To Excel",educations_path(format: "xls"),:class => 'btn btn-mini' %>
+</div>
