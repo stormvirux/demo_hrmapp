@@ -305,6 +305,7 @@ ar:
       title: "تفاصيل التأشيرة"
     insurance:
       title: "تفاصيل التأمين"
+    payroll: "جدول الرواتب"
   documents:
       name: "الاسم الكامل"
   layouts:

@@ -25,6 +25,7 @@ en:
   employees:
     index:
       title: "Employees"
+    payroll: "Payroll"
     passport: 
       title: "Passport Details"
     iqama:

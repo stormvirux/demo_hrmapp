@@ -20,22 +20,20 @@ $(function () {
 </script>
 </head>
 <body>
-  <div id="wrap">
-    <div id="main" class="container clear-top">
+    <div id="main" class="clear-top">
       <%= render 'layouts/header' %>
       <div class="lol">
         <% if signed_in? %>
           <%= link_to_function(raw("<span class='glyphicon glyphicon-print'></span>Print This page &nbsp"),"javascript:print()",:class => 'btn btn-primary btn-print') %>
         <% end %>
     </div>
-        <div class="container-fluid">
+        <div class="container" id="inside">
           <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "alert alert-#{key}") %>
           <% end %>
           <%= yield %>
         </div>
     </div>
-  </div>
    <div class="container">      
     <%= render 'layouts/footer' %>
    </div>

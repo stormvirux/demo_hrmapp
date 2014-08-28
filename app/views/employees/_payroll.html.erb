@@ -1,0 +1,15 @@
+<div class="form-actions">
+<h4><%=t("employees.payroll")%></h4>
+<div class="but">
+<small style="float:right"><%= link_to t('.new', :default => t("helpers.links.new")),
+            new_employee_path,
+            :class => 'btn btn-primary' %>
+<%= link_to "To Excel",employees_path(format: "xls"),:class => 'btn btn-mini' %>
+</small>
+</div>
+</div>
+<br/>
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+    You are on the free trial and some features has been disabled.
+</div>
