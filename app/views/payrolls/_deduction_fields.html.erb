@@ -1,0 +1,24 @@
+<fieldset>
+		<legend>Deductions</legend>
+  <div class="pay">
+  	<div class="container">
+  	<div class="row">
+  		<div class="span3">
+          <%= f.input :dtype,label: false,placeholder: 'Type of Deduction'%>
+        </div>
+        <div class="span3">
+          <%= f.input :dedtype,label: false,collection:[["% of salary","%"],["Amount","amt"]],include_blank: false%>
+        </div>        
+        <div class="span3">
+          <%= f.input :amount,label: false,placeholder: "Amount"%>
+        </div>
+        <div class="span1 payspand">
+          <%= f.hidden_field :_destroy %>
+          <%= link_to "Remove","#" ,class: "remove_fields btn btn-danger"%>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+</fieldset>

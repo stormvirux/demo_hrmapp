@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empno: MyString
+  amount: 9.99
+  type: 
+  dedtype: MyString
+  payroll: 
+
+two:
+  empno: MyString
+  amount: 9.99
+  type: 
+  dedtype: MyString
+  payroll: 
+# == Schema Information
+#
+# Table name: deductions
+#
+#  id         :integer         not null, primary key
+#  empno      :string(255)
+#  amount     :decimal(, )
+#  dtype      :string(255)
+#  dedtype    :string(255)
+#  payroll_id :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

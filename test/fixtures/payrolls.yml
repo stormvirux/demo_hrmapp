@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empno: MyString
+  name: MyString
+
+two:
+  empno: MyString
+  name: MyString
+# == Schema Information
+#
+# Table name: payrolls
+#
+#  id         :integer         not null, primary key
+#  empno      :string(255)
+#  name       :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  totsal     :decimal(, )
+#
+

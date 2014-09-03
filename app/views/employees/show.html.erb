@@ -1,8 +1,9 @@
 <%- model_class = Employee -%>
-<div class="page-header">
+<% if false %>
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-<div="show1">  
+<% end %>
+<div class="show1">  
   <p>
     <% unless @employee.image_url.nil? %><%= image_tag @employee.image_url(:display) %><br /><% end %>
   </p>
@@ -166,7 +167,6 @@
   </tr>
   <% end %>
  </table>
-
  
 
 <div class="form-actions">

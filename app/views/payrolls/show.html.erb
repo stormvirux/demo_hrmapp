@@ -1,0 +1,36 @@
+<%- model_class = Payroll -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:empno) %>:</strong></dt>
+  <dd><%= @payroll.empno %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @payroll.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:totsal) %>:</strong></dt>
+  <dd><%= number_to_currency(@payroll.totsal, :unit => "€")%></dd>
+  <%- model_class = Allowance -%>
+  <% for allowance in @payroll.allowances %> 
+    <dd><%=  allowance.atype %> </dd>
+    <dd><%=  allowance.amount %> </dd>
+  <% end %>
+  <%- model_class = Deduction -%>
+  <% for deduction in @payroll.deductions %> 
+    <dd><%=  deduction.dtype %> </dd>
+    <dd><%=  deduction.amount %> </dd>
+  <% end %>
+</ol>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              payrolls_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_payroll_path(@payroll), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              payroll_path(@payroll),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

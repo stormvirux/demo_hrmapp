@@ -1,0 +1,21 @@
+<fieldset>
+		<legend>Salary&Allowance</legend>
+  <div class="pay">
+  	<div class="container">
+  	<div class="row">
+  		<div class="span4">
+          <%= f.input :atype,label: false,placeholder: 'Type of Allowance'%>
+        </div>
+        <div class="span4">
+          <%= f.input :amount,label: false,placeholder: "Amount"%>
+        </div>
+        <div class="span1 payspan">
+          <%= f.hidden_field :_destroy %>
+          <%= link_to "Remove","#" ,class: "remove_fields btn btn-danger"%>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+</fieldset>

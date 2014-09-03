@@ -13,31 +13,33 @@
   <![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <%= render 'layouts/shim' %>
-  <script type="text/javascript">
-$(function () {
-       $(".tip").tooltip();
-});
-</script>
 </head>
 <body>
-    <div id="main" class="clear-top">
-      <%= render 'layouts/header' %>
-      <div class="lol">
-        <% if signed_in? %>
-          <%= link_to_function(raw("<span class='glyphicon glyphicon-print'></span>Print This page &nbsp"),"javascript:print()",:class => 'btn btn-primary btn-print') %>
-        <% end %>
+  <div id="main" class="clear-top">
+    <%= render 'layouts/header' %>
+    <div class="lol">
+      <% if signed_in? %>
+        <%= link_to_function(raw("<span class='glyphicon glyphicon-print'></span>Print This page &nbsp"),"javascript:print()",:class => 'btn btn-primary btn-print') %>
+      <% end %>
     </div>
-        <div class="container" id="inside">
+    <div class="container" id="inside">
+      <% if signed_in? %>
+      <div class="row-fluid">
+        <div class="span3 imp1">
+          <%= render 'layouts/sidebar' %>
+        </div>
+        <div class="span9 imp2">
+      <% end %>
           <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "alert alert-#{key}") %>
           <% end %>
           <%= yield %>
         </div>
+      </div>
     </div>
-   <div class="container">      
-    <%= render 'layouts/footer' %>
-   </div>
-
-
+    <div class="container">      
+      <%= render 'layouts/footer' %>
+    </div>
+  </div>
 </body>
 </html>

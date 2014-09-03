@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140820045002) do
+ActiveRecord::Schema.define(:version => 20140903111606) do
+
+  create_table "allowances", :force => true do |t|
+    t.string   "empno"
+    t.decimal  "amount"
+    t.string   "atype"
+    t.integer  "payroll_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "allowances", ["payroll_id"], :name => "index_allowances_on_payroll_id"
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -42,6 +53,18 @@ ActiveRecord::Schema.define(:version => 20140820045002) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "deductions", :force => true do |t|
+    t.string   "empno"
+    t.decimal  "amount"
+    t.string   "dtype"
+    t.string   "dedtype"
+    t.integer  "payroll_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "deductions", ["payroll_id"], :name => "index_deductions_on_payroll_id"
 
   create_table "documents", :force => true do |t|
     t.string   "empno"
@@ -96,6 +119,14 @@ ActiveRecord::Schema.define(:version => 20140820045002) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "image"
+  end
+
+  create_table "payrolls", :force => true do |t|
+    t.string   "empno"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.decimal  "totsal"
   end
 
   create_table "searches", :force => true do |t|
