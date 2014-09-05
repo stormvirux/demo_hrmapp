@@ -1,4 +1,6 @@
 class PayrollsController < ApplicationController
+  before_filter :signed_in_user,
+                only: [:index, :edit, :update, :destroy,:show,:new,:create]
   # GET /payrolls
   # GET /payrolls.json
   def index

@@ -1,10 +1,12 @@
 HrsiteNew::Application.routes.draw do
 
-
   require File.expand_path("../../lib/authenticated_user",__FILE__)
 
   scope ":locale" ,locale: /#{I18n.available_locales.join("|")}/ do
     resources :sessions, only: [:new, :create, :destroy]
+    resources :settings
+    resources :leavetypes
+    resources :leaverolls
     resources :payrolls
     resources :contracts
     resources :educations

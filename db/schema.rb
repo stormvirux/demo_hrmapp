@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140903111606) do
+ActiveRecord::Schema.define(:version => 20140905031601) do
 
   create_table "allowances", :force => true do |t|
     t.string   "empno"
@@ -121,6 +121,25 @@ ActiveRecord::Schema.define(:version => 20140903111606) do
     t.string   "image"
   end
 
+  create_table "leaverolls", :force => true do |t|
+    t.string   "empno"
+    t.string   "ltype"
+    t.date     "lfrom"
+    t.date     "lto"
+    t.integer  "totdays"
+    t.text     "notes"
+    t.boolean  "approved"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+  end
+
+  create_table "leavetypes", :force => true do |t|
+    t.string   "ltype"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "payrolls", :force => true do |t|
     t.string   "empno"
     t.string   "name"
@@ -132,6 +151,13 @@ ActiveRecord::Schema.define(:version => 20140903111606) do
   create_table "searches", :force => true do |t|
     t.string   "doc"
     t.date     "edate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "settings", :force => true do |t|
+    t.integer  "leave"
+    t.string   "cur"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

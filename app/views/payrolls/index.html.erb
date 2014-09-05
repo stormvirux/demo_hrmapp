@@ -19,6 +19,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:empno) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:totsal) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <tr>
         <td><%= payroll.empno %></td>
         <td><%= link_to payroll.name, payroll_path(payroll) %></td>
+        <td><%= number_to_currency(payroll.totsal,:unit => "SR ")%></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_payroll_path(payroll), :class => 'btn btn-mini' %>

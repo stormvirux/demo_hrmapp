@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empno: MyString
+  ltype: MyString
+  lfrom: 2014-09-04
+  lto: 2014-09-04
+  totdays: 1
+  notes: MyText
+  approved: false
+
+two:
+  empno: MyString
+  ltype: MyString
+  lfrom: 2014-09-04
+  lto: 2014-09-04
+  totdays: 1
+  notes: MyText
+  approved: false
+# == Schema Information
+#
+# Table name: leaverolls
+#
+#  id         :integer         not null, primary key
+#  empno      :string(255)
+#  ltype      :string(255)
+#  lfrom      :date
+#  lto        :date
+#  totdays    :integer
+#  notes      :text
+#  approved   :boolean
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  name       :string(255)
+#
+

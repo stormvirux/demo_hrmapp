@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ltype: MyString
+
+two:
+  ltype: MyString
+# == Schema Information
+#
+# Table name: leavetypes
+#
+#  id         :integer         not null, primary key
+#  ltype      :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

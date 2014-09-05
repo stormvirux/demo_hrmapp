@@ -1,0 +1,46 @@
+<%- model_class = Leaveroll -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:empno) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:ltype) %></th>
+      <th><%= model_class.human_attribute_name(:lfrom) %></th>
+      <th><%= model_class.human_attribute_name(:lto) %></th>
+      <th><%= model_class.human_attribute_name(:totdays) %></th>
+      <th><%= model_class.human_attribute_name(:notes) %></th>
+      <th><%= model_class.human_attribute_name(:approved) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leaverolls.each do |leaveroll| %>
+      <tr>
+        <td><%= leaveroll.empno %></td>
+        <td><%= link_to leaveroll.name,leaveroll_path(leaveroll) %></td>
+        <td><%= leaveroll.ltype %></td>
+        <td><%= leaveroll.lfrom %></td>
+        <td><%= leaveroll.lto %></td>
+        <td><%= leaveroll.totdays %></td>
+        <td><%= leaveroll.notes %></td>
+        <td><%= leaveroll.approved %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_leaveroll_path(leaveroll), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      leaveroll_path(leaveroll),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_leaveroll_path,
+            :class => 'btn btn-primary' %>
