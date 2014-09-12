@@ -1,6 +1,16 @@
 <%- model_class = Contract -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
+</div>
+<div class="form-actions">
+  <h4><%=t '.title', :default => model_class.model_name.human.titleize %></h4>
+  <div class="but">
+    <small style="float:right"><%= link_to t('.new', :default => t("helpers.links.new")),
+            new_contract_path,
+            :class => 'btn btn-primary' %>
+          <%= link_to "To Excel",contracts_path(format: "xls"),:class => 'btn btn-mini' %>
+    </small>
+</div>
 </div>
 <table class="table table-striped">
   <thead>
@@ -39,9 +49,4 @@
     <% end %>
   </tbody>
 </table>
-<div class="form-actions">
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_contract_path,
-            :class => 'btn btn-primary' %>
-<%= link_to "To Excel",contracts_path(format: "xls"),:class => 'btn btn-mini' %>
-</div>
+

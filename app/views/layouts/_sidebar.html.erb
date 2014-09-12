@@ -1,35 +1,38 @@
-<ul id="sidenav01" class="accordion nav nav-department nav-tabs nav-stacked">
+<ul id="sidenav01" class="accordion nav nav-department nav-tabs nav-stacked btn-primary btn-cust">
     <li>
         <%= link_to root_path do%>
           <span class="icon-home icon-white"></span>&nbsp Home
         <% end %>
     </li>
     <li>
-        <a href="#li02" data-toggle='collapse' data-target='#subnav01', data-parent='#sidenav01' class="accordion-toggle collapsed"><i class="icon-chevron-up pull-right"></i>Programs </a>
+        <a href="#li02" data-toggle='collapse' data-target='#subnav01', data-parent='#sidenav01' class="accordion-toggle collapsed"><i class="icon-chevron-up pull-right"></i><i class="icon-group"></i> Employee</a>
           <ul id="subnav01" class="nav nav-list collapse">
-            <li><a href="#1"><i class="icon-home"></i> Programs Home</a></li>
-            <li><a href="#2">Undergraduate Program</a></li>
-            <li><a href="#3">Graduate Program</a></li>
-            <li><a href="#4">Undergraduate Program</a></li>
-            <li><a href="#5">Math Plaza</a></li>
-            <li><a href="#6">UTeaChattanoga</a></li>
-            <li><a href="#7">Placement Criteria</a></li>
-            <li><a href="#8">Step Ahead Math</a></li>
+            <li><%= link_to root_path do%><i class="icon-home"></i> Employee Home</li><% end %>
+            <li><%= link_to root_path do%><i class="icon-book"></i> Employee Education</li><% end %>
+            <li><%= link_to root_path do%><i class="icon-file"></i> Employee Contracts</li><% end %>
+            <li><%= link_to root_path do%><i class="icon-home"></i> Employee Payroll</li><% end %>
+            <li><%= link_to root_path do%><i class="icon-home"></i> Employee Leave</li><% end %>
           </ul>
     </li>
     <li>
-        <a href="#page">A Single Math Page</a> 
-    </li>
+        <%= link_to root_path do%><i class="icon-road"></i> Vehicle 
+    </li><% end %>
     <li>
-        <a href="#li03" data-toggle='collapse' data-target='#subnav02', data-parent='#sidenav01' class="accordion-toggle collapsed"><i class="icon-chevron-up pull-right"></i>Student Resources</a>
+        <%= link_to root_path do%><i class="icon-search"></i> Search 
+    </li><% end %>
+    <li>
+        <a href="#li03" data-toggle='collapse' data-target='#subnav02', data-parent='#sidenav01' class="accordion-toggle collapsed"><i class="icon-chevron-up pull-right"></i><i class="icon-file"></i> Documents</a>
           <ul id="subnav02" class="nav nav-list collapse">
-            <li><a href="#pimu">Pi Mu Epsilon</a></li>
-            <li><a href="#schol">Scholarships and Awards</a></li>
-            <li><a href="#links">Math Links</a></li>
-            <li><a href="#advise">Advisement</a></li>
+            <li><a href="#pimu">Iqama</a></li>
+            <li><a href="#schol">Passport</a></li>
+            <li><a href="#links">Visa</a></li>
+            <li><a href="#advise">Insurance</a></li>
           </ul>
     </li>
     <li>
         <a href="directory.php"><i class="icon-group"></i> Staff Profiles</a> 
     </li>
+     <li>
+        <%= link_to root_path do%> <i class="icon-cog"></i> Payroll Settings 
+    </li><% end %>
 </ul>

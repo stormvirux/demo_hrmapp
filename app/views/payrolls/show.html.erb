@@ -3,26 +3,34 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:empno) %>:</strong></dt>
-  <dd><%= @payroll.empno %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @payroll.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:totsal) %>:</strong></dt>
-  <dd><%= number_to_currency(@payroll.totsal, :unit => "€")%></dd>
+<table class="table table-striped">
+<tr>
+  <td><%= model_class.human_attribute_name(:empno) %>:</td>
+  <td><%= @payroll.empno %></td>
+</tr>
+<tr>
+  <td><%= model_class.human_attribute_name(:name) %>:</td>
+  <td><%= @payroll.name %></td>
+</tr>
+<tr> 
   <%- model_class = Allowance -%>
   <% for allowance in @payroll.allowances %> 
-    <dd><%=  allowance.atype %> </dd>
-    <dd><%=  allowance.amount %> </dd>
+    <td><%=  allowance.atype %> </td>
+    <td><%= number_to_currency(allowance.amount,:unit => "€") %> </td>
   <% end %>
+</tr>
+<tr> 
   <%- model_class = Deduction -%>
   <% for deduction in @payroll.deductions %> 
-    <dd><%=  deduction.dtype %> </dd>
-    <dd><%=  deduction.amount %> </dd>
+    <td><%=  deduction.dtype %> </td>
+    <td>-<%= number_to_currency(deduction.amount, :unit => "€") %> </td>
   <% end %>
-</ol>
-</dl>
-
+</tr>
+<tr> 
+  <td><%= model_class.human_attribute_name(:totsal) %></td>
+  <td><%= number_to_currency(@payroll.totsal, :unit => "€")%></td>
+</tr>
+</table>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               payrolls_path, :class => 'btn'  %>

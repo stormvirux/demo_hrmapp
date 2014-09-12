@@ -1,7 +1,17 @@
 <%- model_class = Leaveroll -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
 </div>
+<div class="form-actions">
+<h4><%=t '.title', :default => model_class.model_name.human.titleize %></h4>
+  <div class="but">
+    <small style="float:right"><%= link_to t('.new', :default => t("helpers.links.new")),
+            new_leaveroll_path,
+            :class => 'btn btn-primary' %>
+    </small>
+  </div>
+</div>
+<br/>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -41,6 +51,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_leaveroll_path,
-            :class => 'btn btn-primary' %>

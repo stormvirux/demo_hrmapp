@@ -1,7 +1,19 @@
 <%- model_class = Employee -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
 </div>
+<div class="form-actions">
+  <h4><%=t '.title', :default => model_class.model_name.human.titleize %></h4>
+  <div class="but">
+    <small style="float:right"><%= link_to t('.new', :default => t("helpers.links.new")),
+          new_employee_path,
+          :class => 'btn btn-primary' %>
+          <%= link_to "To Excel",find_path(params.merge(format: 'xls')),:class => 'btn btn-mini' %>
+    </small>
+  </div>
+</div>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,6 +24,7 @@
       <th><%= model_class.human_attribute_name(:last_name) %></th>
       <th><%= model_class.human_attribute_name(:gender) %></th>
       <th><%= model_class.human_attribute_name(:dob) %></th>
+
       <th><%= model_class.human_attribute_name(:nationality) %></th>
       <th><%= model_class.human_attribute_name(:designation) %></th>
       <th><%= model_class.human_attribute_name(:department) %></th>
@@ -44,6 +57,7 @@
         <td><%= employee.last_name %></td>
         <td><%= employee.gender %></td>
         <td><%= employee.dob %></td>
+
         <td><%= employee.nationality %></td>
         <td><%= employee.designation %></td>
         <td><%= employee.department %></td>
@@ -77,12 +91,6 @@
     <% end %>
   </tbody>
 </table>
-<div class="form-actions">
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_employee_path,
-            :class => 'btn btn-primary' %>
-<%= link_to "To Excel",find_path(params.merge(format: 'xls')),:class => 'btn btn-mini' %>
-</div>
 <% if false %>
 <ul>
   <%= @employees.each do |employee| %>

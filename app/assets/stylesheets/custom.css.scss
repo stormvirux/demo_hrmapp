@@ -244,3 +244,19 @@ body {
 .imp1{
   width: 19% !important;
 }
+.btn-cust{
+  background-image: -moz-linear-gradient(center top , #25B1F7, #25B1F7) !important;
+}
+.nav-tabs.nav-stacked > li > a:hover {
+  background-color: #32A0DF !important;
+}
+.nav-tabs.nav-stacked > li > a{
+  color: white;
+}
+.nav > li > a:hover {
+    background-color: #32A0DF !important;
+    border-color: #25B1F7;
+}
+.nav-list > li > a, .nav-list .nav-header {
+      color: black !important;
+}

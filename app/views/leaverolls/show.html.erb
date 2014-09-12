@@ -2,25 +2,41 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+
 <div class="progress progress-danger">
   <div class="bar" style="<%= 'width:'+ (@leaveroll.lprogress).to_s + '%' %>"></div>
 </div>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:empno) %>:</strong></dt>
-  <dd><%= @leaveroll.empno %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ltype) %>:</strong></dt>
-  <dd><%= @leaveroll.ltype %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:lfrom) %>:</strong></dt>
-  <dd><%= @leaveroll.lfrom %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:lto) %>:</strong></dt>
-  <dd><%= @leaveroll.lto %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:totdays) %>:</strong></dt>
-  <dd><%= @leaveroll.totdays %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
-  <dd><%= @leaveroll.notes %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:approved) %>:</strong></dt>
-  <dd><%= @leaveroll.approved %></dd>
-</dl>
+
+<table class="table table-striped">
+  <tr>
+    <td><%= model_class.human_attribute_name(:empno) %>:</td>
+    <td><%= @leaveroll.empno %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:ltype) %>:</td>
+    <td><%= @leaveroll.ltype %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:lfrom) %>:</td>
+    <td><%= @leaveroll.lfrom %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:lto) %>:</td>
+    <td><%= @leaveroll.lto %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:totdays) %>:</td>
+    <td><%= @leaveroll.totdays %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:notes) %>:</td>
+    <td><%= @leaveroll.notes %></td>
+  </tr>
+  <tr>
+    <td><%= model_class.human_attribute_name(:approved) %>:</td>
+    <td><%= @leaveroll.approved %></td>
+</tr>
+</table>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
