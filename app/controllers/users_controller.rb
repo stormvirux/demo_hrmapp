@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user,
                 only: [:index, :edit, :update, :destroy,:show,:new,:create]
+  before_filter :admin_user,only: [:destroy,:edit, :update]
   # GET /users
   # GET /users.json
   def index
@@ -81,5 +82,8 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end

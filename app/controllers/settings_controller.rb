@@ -1,6 +1,9 @@
 class SettingsController < ApplicationController
   before_filter :signed_in_user,
                 only: [:index, :edit, :update, :destroy,:show,:new,:create]
+  before_filter :correct_user,only: [:edit, :update]
+  before_filter :admin_user,only: :destroy
+
   # GET /settings
   # GET /settings.json
   def index
@@ -82,4 +85,8 @@ class SettingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end

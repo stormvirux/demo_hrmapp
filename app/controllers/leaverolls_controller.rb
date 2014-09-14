@@ -1,4 +1,9 @@
 class LeaverollsController < ApplicationController
+  before_filter :signed_in_user,
+                only: [:index, :edit, :update, :destroy,:show,:new,:create,:index2]
+  #before_filter :correct_user,only: [:edit, :update]
+  before_filter :admin_user,only: :destroy
+
   # GET /leaverolls
   # GET /leaverolls.json
   def index
@@ -9,7 +14,25 @@ class LeaverollsController < ApplicationController
       format.json { render json: @leaverolls }
     end
   end
+  def index2
+    @abc={}
+    @leaverolls = Leaveroll.all
+    @leaverolls_by_date=@leaverolls.group_by(&:lfrom)
+    @leaverolls_by_date.each do |key,value|
+      value.each do |x|
+          (key..x.lto).each do |y|
+          @abc[y]=value
+          end
+      end
+    end
+    @leaverolls_by_date.reverse_merge!(@abc)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @leaverolls }
+    end
+  end
   # GET /leaverolls/1
   # GET /leaverolls/1.json
   def show
@@ -80,4 +103,8 @@ class LeaverollsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end

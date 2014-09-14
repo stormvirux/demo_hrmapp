@@ -46,6 +46,3 @@ class Payroll < ActiveRecord::Base
   end
 end
 
-
-
-

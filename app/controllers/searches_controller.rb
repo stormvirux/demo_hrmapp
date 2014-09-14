@@ -1,4 +1,8 @@
 class SearchesController < ApplicationController
+  before_filter :signed_in_user,
+                only: [:index, :edit, :update, :destroy,:show,:new,:create]
+  before_filter :correct_user,only: [:edit, :update]
+  before_filter :admin_user,only: :destroy
 
   # GET /searches/1
   # GET /searches/1.json
@@ -39,4 +43,8 @@ class SearchesController < ApplicationController
       end
     end
   end
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end
