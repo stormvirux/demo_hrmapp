@@ -164,11 +164,11 @@ input {
 
 
 }
-
+/*
 .glyphicon{
  float:right !important;
 }
-
+*/
 
 .alert {
   width: 800px !important;
@@ -259,4 +259,19 @@ body {
 }
 .nav-list > li > a, .nav-list .nav-header {
       color: black !important;
+}
+.inner-addon{
+  position: relative;
+}
+.inner-addon .glyphicon{
+  position: absolute;
+  padding: 8px;
+  ponter-events: none;
+}
+.left-addon .glyphicon{ left: 0px;}
+.right-addon .glyphicon{ right: 0px}
+.left-addon input{padding-left: 30px}
+.right-addon input{padding-right: 30px}
+.nav > li > a:hover, .nav > li > a:focus {
+ background-color:  #32A0DF;  
 }

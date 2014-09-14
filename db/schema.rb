@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905031601) do
+ActiveRecord::Schema.define(:version => 20140914035928) do
 
   create_table "allowances", :force => true do |t|
     t.string   "empno"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20140905031601) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.decimal  "totsal"
+    t.decimal  "dedperday"
   end
 
   create_table "searches", :force => true do |t|
@@ -160,14 +161,16 @@ ActiveRecord::Schema.define(:version => 20140905031601) do
     t.string   "cur"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.decimal  "dedperday"
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "remember_token"
+    t.boolean  "admin",           :default => false
   end
 
   create_table "vehicles", :force => true do |t|

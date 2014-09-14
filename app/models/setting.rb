@@ -1,5 +1,5 @@
 class Setting < ActiveRecord::Base
-  attr_accessible :cur, :leave
+  attr_accessible :cur, :leave, :dedperday
 end
 # == Schema Information
 #
@@ -10,5 +10,6 @@ end
 #  cur        :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  dedperday  :decimal(, )
 #
 

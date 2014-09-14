@@ -8,6 +8,7 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  totsal     :decimal(, )
+#  dedperday  :decimal(, )
 #
 
 class Payroll < ActiveRecord::Base
@@ -26,6 +27,8 @@ class Payroll < ActiveRecord::Base
   end
   def saltotal
     self.totsal ||= 0.0
+    rem ||=0.0
+    tot ||=0.0
     #self.allowances.each do |allowance|
     #  self.totsal+=allowance.amount
     #end
@@ -33,6 +36,13 @@ class Payroll < ActiveRecord::Base
     #  self.totsal-=deduction.amount
     #end  
     self.totsal=allowances.map(&:amount).sum-deductions.map(&:amount).sum
+    emp=Leaveroll.find_by_empno(self.empno)
+    avail=Setting.find(1)
+    if emp.totdays>avail.leave
+      rem=emp.totdays-avail.leave
+      tot=avail.dedperday*rem
+    end
+    self.totsal-=tot
   end
 end
 

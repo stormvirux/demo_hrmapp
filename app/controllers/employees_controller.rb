@@ -1,6 +1,9 @@
 class EmployeesController < ApplicationController
   before_filter :signed_in_user,
                 only: [:index, :edit, :update, :destroy,:docshow,:iqama,:passport,:insurance,:visa,:show,:new,:create]
+  before_filter :correct_user,only: [:edit, :update]
+  before_filter :admin_user,only: :destroy
+
   # GET /employees
   # GET /employees.json
   def index
@@ -122,4 +125,8 @@ class EmployeesController < ApplicationController
       format.json { render json: @employees }
     end
   end
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end
