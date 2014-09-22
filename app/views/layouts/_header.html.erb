@@ -49,7 +49,9 @@
           
 
           <ul class="nav pull-right">
-            <li>  <%=link_to Time.now,"#" %></li>
+            <li>  <%= link_to Time.now.to_s.split(" ")[1],"#" %></li>
+            <li>  <%= link_to Time.now.to_s.split(" ")[0],"#" %></li>
+            <li>  <%= link_to Time.now.to_s.split(" ")[2],"#" %></li>
             <li>  <%= link_to_unless_current t("layouts.header.english").html_safe, locale: "en" %></li>
             <li>  <%= link_to_unless_current t("layouts.header.arabic").html_safe, locale: "ar" %></li>
             <% if signed_in? %>
