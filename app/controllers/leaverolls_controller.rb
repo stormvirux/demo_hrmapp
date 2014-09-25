@@ -1,6 +1,6 @@
 class LeaverollsController < ApplicationController
   before_filter :signed_in_user,
-                only: [:index, :edit, :update, :destroy,:show,:new,:create,:index2]
+                only: [:index, :edit, :update, :destroy,:show,:new,:create,:index2,:index3]
   #before_filter :correct_user,only: [:edit, :update]
   before_filter :admin_user,only: :destroy
 
@@ -29,7 +29,32 @@ class LeaverollsController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index2.html.erb
+      format.json { render json: @leaverolls }
+    end
+  end
+
+  def index3
+    @abc={}
+    @mon={}
+    @leaverolls = Leaveroll.all
+    @leaverolls_by_date=@leaverolls.group_by(&:lfrom)
+    @leaverolls_by_date.each do |key,value|
+      value.each do |x|
+          (key..x.lto).each do |y|
+          @abc[y]=value
+          end
+      end
+    end
+    @leaverolls_by_date.reverse_merge!(@abc)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.parse(Time.now.to_hijri.to_s.split(" ")[0])
+    month={"01" => "Muharram","02" => "Safar","03" => "RabiI" ,"04" => "RabiII",
+      "05" => "JumadaI ","06" => "JumadaII","07" => "Rajab",
+      "08" => "Shaban","09" => "Ramadan ","10" => "Shawwal","11" => "Dhul-Qada","12" => "Dhul-Hijja"}
+
+    @mon=params[:date] ? month[(params[:date]).split("-")[1]]:month[Date.parse(Time.now.to_hijri.to_s.split(" ")[0]).month.to_s]
+    respond_to do |format|
+      format.html # index3.html.erb
       format.json { render json: @leaverolls }
     end
   end

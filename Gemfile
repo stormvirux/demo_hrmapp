@@ -16,6 +16,7 @@ gem 'country_select'
 gem'carrierwave'
 gem 'cloudinary'
 gem 'rmagick'
+gem 'hijri_gem'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,7 +38,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-  
+
 # Use unicorn as the app server
 
 

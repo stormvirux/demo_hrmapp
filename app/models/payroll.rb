@@ -38,9 +38,11 @@ class Payroll < ActiveRecord::Base
     self.totsal=allowances.map(&:amount).sum-deductions.map(&:amount).sum
     emp=Leaveroll.find_by_empno(self.empno)
     avail=Setting.find(1)
-    if emp.totdays>avail.leave
-      rem=emp.totdays-avail.leave
-      tot=avail.dedperday*rem
+    if emp
+      if emp.totdays>avail.leave
+        rem=emp.totdays-avail.leave
+        tot=avail.dedperday*rem
+      end
     end
     self.totsal-=tot
   end
